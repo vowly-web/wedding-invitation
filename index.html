@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Charlotte &amp; Henry | September 12, 2026</title>
+    <meta name="description"
+        content="Join Charlotte &amp; Henry as they celebrate their wedding at Villa Serena Estate, Glen Ellen, California.">
+
+    <!--
+    ============================================================
+    FONTS
+    Three Google Fonts power this design:
+      - Playfair Display  -> big display headings
+      - Cormorant Garamond -> body copy, labels, numbers
+      - Parisienne          -> the script font used for the couple's names
+    To change fonts, swap the link below AND update the
+    --font-display / --font-script / --font-body variables
+    in style.css (top of file, under :root).
+    ============================================================
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Parisienne&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+       SKIP LINK — accessibility: lets keyboard users jump past
+       the envelope animation straight to the invitation content.
+  ============================================================ -->
+    <a class="skip-link" href="#main-content">Skip envelope animation</a>
+
+    <!-- ============================================================
+       ENVELOPE INTRO SCREEN
+       This is the very first thing guests see. The whole invitation
+       lives behind a closed envelope sealed with wax. Guests click
+       the wax seal to "break" it, the envelope flap opens, and the
+       invitation card slides out — then the page reveals the main
+       site underneath.
+
+       ✏️ TO CHANGE THE MONOGRAM LETTERS ("C" and "H") ON THE SEAL:
+          Search for "wax-seal__initials" below.
+  ============================================================ -->
+    <div class="envelope-screen" id="envelopeScreen" aria-label="Wedding invitation envelope, click the seal to open">
+
+        <div class="envelope" id="envelope">
+
+            <!-- Envelope body (the pocket) -->
+            <div class="envelope__pocket"></div>
+            <!-- The invitation card that slides up out of the envelope -->
+            <div class="envelope__card" id="envelopeCard">
+                <p class="envelope__card-eyebrow">Together with their families</p>
+                <p class="envelope__card-names">Charlotte <span>&amp;</span> Henry</p>
+                <p class="envelope__card-date">request the pleasure of your company</p>
+            </div>
+            <div class="envelope__bottom"></div>
+
+
+            <!-- Top flap, sits above the card, opens on click -->
+            <div class="envelope__flap" id="envelopeFlap"></div>
+
+            <!-- Wax seal — the click target -->
+            <button class="wax-seal" id="waxSeal" type="button" aria-label="Break the wax seal to open your invitation">
+                <img src="wax.png" alt="">
+            </button>
+        </div>
+
+        <p class="envelope-screen__hint" id="envelopeHint">Tap the seal to open your invitation</p>
+    </div>
+
+
+    <!-- ============================================================
+       MAIN INVITATION CONTENT
+       Hidden until the envelope animation completes.
+  ============================================================ -->
+    <div class="site" id="mainContent">
+
+        <!-- ============================================================
+         STICKY NAVIGATION
+         ✏️ Section links auto-scroll smoothly (see style.css:
+         html { scroll-behavior:smooth } and script.js for the
+         mobile menu close behaviour).
+    ============================================================ -->
+        <header class="nav" id="siteNav">
+            <a href="#hero" class="nav__brand">C&nbsp;&amp;&nbsp;H</a>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
+                aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav__menu" id="navMenu">
+                <a href="#story">Our Story</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#details">Details</a>
+                <a href="#rsvp">RSVP</a>
+            </nav>
+        </header>
+
+        <main id="main-content" tabindex="-1">
+
+            <!-- ============================================================
+           HERO SECTION
+           ✏️ TO CHANGE THE COUPLE'S NAMES: edit the .hero__names spans
+           ✏️ TO CHANGE THE WEDDING DATE SHOWN HERE: edit .hero__date
+           ✏️ TO CHANGE THE HERO BACKGROUND PHOTO: see style.css,
+              search for "HERO BACKGROUND PHOTO"
+      ============================================================ -->
+            <section class="hero" id="hero">
+                <div class="hero__frame">
+                    <p class="hero__eyebrow">We are getting married</p>
+
+                    <h1 class="hero__names">
+                        <!-- ✏️ BRIDE NAME -->
+                        <span>Charlotte</span>
+                        <em class="hero__amp">&amp;</em>
+                        <!-- ✏️ GROOM NAME -->
+                        <span>Henry</span>
+                    </h1>
+
+                    <div class="hero__divider" aria-hidden="true">
+                        <svg viewBox="0 0 200 24" class="hero__sprig">
+                            <path d="M0 12 H80" stroke="currentColor" stroke-width="1" />
+                            <path d="M120 12 H200" stroke="currentColor" stroke-width="1" />
+                            <circle cx="100" cy="12" r="3" fill="currentColor" />
+                            <path d="M90 12 C93 4, 100 4, 100 12 C100 4, 107 4, 110 12" stroke="currentColor"
+                                fill="none" stroke-width="1" />
+                        </svg>
+                    </div>
+
+                    <!-- ✏️ WEDDING DATE TEXT (also update script.js WEDDING_DATE constant to match) -->
+                    <p class="hero__date">
+                        <time datetime="2026-09-12">Saturday, the Twelfth of September, Two Thousand Twenty-Six</time>
+                    </p>
+
+                    <!-- ✏️ VENUE / LOCATION NAME -->
+                    <p class="hero__location">Villa Serena Estate &nbsp;·&nbsp; Glen Ellen, California</p>
+
+                    <a href="#rsvp" class="hero__cta">Join Our Celebration</a>
+                </div>
+
+                <button class="hero__scroll-cue" id="scrollCue" aria-label="Scroll to learn more">
+                    <span></span>
+                </button>
+            </section>
+
+            <!-- ============================================================
+           COUNTDOWN SECTION
+           Live countdown calculated in script.js from the
+           WEDDING_DATE constant. Update that constant to change
+           the date/time the countdown targets.
+      ============================================================ -->
+            <section class="countdown" id="countdown" aria-label="Countdown to the wedding">
+                <p class="section-eyebrow section-eyebrow--on-dark">Counting down to</p>
+                <h2 class="section-title section-title--on-dark">Our Wedding Day</h2>
+
+                <div class="countdown__grid" id="countdownGrid">
+                    <div class="countdown__unit">
+                        <span class="countdown__number" id="cdDays">00</span>
+                        <span class="countdown__label">Days</span>
+                    </div>
+                    <div class="countdown__unit">
+                        <span class="countdown__number" id="cdHours">00</span>
+                        <span class="countdown__label">Hours</span>
+                    </div>
+                    <div class="countdown__unit">
+                        <span class="countdown__number" id="cdMinutes">00</span>
+                        <span class="countdown__label">Minutes</span>
+                    </div>
+                    <div class="countdown__unit">
+                        <span class="countdown__number" id="cdSeconds">00</span>
+                        <span class="countdown__label">Seconds</span>
+                    </div>
+                </div>
+
+                <p class="countdown__message" id="countdownMessage" hidden>The day has finally arrived — see you at the
+                    celebration!</p>
+            </section>
+
+            <!-- ============================================================
+           OUR STORY / TIMELINE SECTION
+           ✏️ Each <article class="timeline__item"> is one milestone.
+              Duplicate an article block to add more moments. Edit the
+              <time>, the title, and the paragraph text for each.
+      ============================================================ -->
+            <section class="story" id="story">
+                <p class="section-eyebrow">Our Story</p>
+                <h2 class="section-title">How We Got Here</h2>
+                <p class="section-intro">Every love story is beautiful, but ours is our favorite. Here are a few of the
+                    chapters that led us to this one.</p>
+
+                <ol class="timeline">
+                    <li class="timeline__item">
+                        <div class="timeline__marker" aria-hidden="true"></div>
+                        <div class="timeline__content">
+                            <time class="timeline__date" datetime="2019-06">June 2019</time>
+                            <h3 class="timeline__title">A Special Beginning</h3>
+                            <p class="timeline__text">Sometimes the best things start unexpectedly.
+                                What began as a simple conversation quickly became something neither of us wanted to end
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="timeline__item">
+                        <div class="timeline__marker" aria-hidden="true"></div>
+                        <div class="timeline__content">
+                            <time class="timeline__date" datetime="2021-12">December 2021</time>
+                            <h3 class="timeline__title">The Proposal</h3>
+                            <p class="timeline__text">One unforgettable day, surrounded by love and happiness, came the
+                                question that changed everything forever..</p>
+                        </div>
+                    </li>
+
+                    <li class="timeline__item">
+                        <div class="timeline__marker" aria-hidden="true"></div>
+                        <div class="timeline__content">
+                            <time class="timeline__date" datetime="2024-04">April 2024</time>
+                            <h3 class="timeline__title">Moving In Together</h3>
+                            <p class="timeline__text">From shared moments and endless conversations to creating memories
+                                together, every step brought us closer.</p>
+                        </div>
+                    </li>
+
+                    <li class="timeline__item">
+                        <div class="timeline__marker" aria-hidden="true"></div>
+                        <div class="timeline__content">
+                            <time class="timeline__date" datetime="2026-09">September 2026</time>
+                            <h3 class="timeline__title">Our Wedding Day</h3>
+                            <p class="timeline__text">Now we are counting down the days until we celebrate this
+                                beautiful chapter with the people who mean the most to us.
+                                We can't wait to share our special day with you</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- ============================================================
+           GALLERY SECTION
+           ✏️ TO CHANGE PHOTOS: replace each "src" below with the path
+              to your own image (e.g. "images/photo-1.jpg"). Keep the
+              "alt" text descriptive for accessibility. Add or remove
+              <figure> blocks to change the number of photos — the
+              grid in style.css will adjust automatically.
+              Images currently point to placeholder stock photography
+              so the page looks complete out of the box.
+      ============================================================ -->
+            <section class="gallery" id="gallery">
+                <p class="section-eyebrow">Gallery</p>
+                <h2 class="section-title">Moments We Love</h2>
+                <p class="section-intro">A few favorites from along the way.</p>
+
+                <div class="gallery__grid" id="galleryGrid">
+                    <figure class="gallery__item">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+                            alt="Charlotte and Henry laughing together outdoors" loading="lazy">
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="https://i.pinimg.com/736x/27/b4/4f/27b44f9d3ddbbfb0b37956ca78f42c7c.jpg"
+                            alt="Engagement portrait at golden hour" loading="lazy">
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="https://i.pinimg.com/736x/ce/49/ba/ce49ba06fc23837591487b386cd54a8a.jpg"
+                            alt="Hands together showing the engagement ring" loading="lazy">
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80"
+                            alt="Walking together through a vineyard" loading="lazy">
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80"
+                            alt="Candid portrait of the couple smiling" loading="lazy">
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80"
+                            alt="Couple embracing among olive trees" loading="lazy">
+                    </figure>
+                </div>
+            </section>
+
+            <!-- Lightbox dialog used by script.js to enlarge gallery photos -->
+            <dialog class="lightbox" id="lightbox">
+                <button class="lightbox__close" id="lightboxClose" aria-label="Close photo">&times;</button>
+                <img src="" alt="" id="lightboxImage">
+            </dialog>
+            <section class="details" id="details">
+                <p class="section-eyebrow">Details</p>
+                <h2 class="section-title">When &amp; Where</h2>
+
+                <div class="details__cards">
+                    <article class="details__card">
+                        <span class="details__icon" aria-hidden="true">⟡</span>
+                        <h3>Ceremony</h3>
+
+                        <!-- الوقت -->
+                        <p class="details__time">4:00 PM</p>
+
+                        <!-- التاريخ -->
+                        <p class="details__date">
+                            Saturday, September 12, 2026
+                        </p>
+
+                        <!-- المكان -->
+                        <p>
+                            Villa Serena Estate<br>
+                            The Olive Grove Lawn<br>
+                            Glen Ellen, California
+                        </p>
+                    </article>
+
+                    <article class="details__card">
+                        <span class="details__icon" aria-hidden="true">⟡</span>
+                        <h3>Reception</h3>
+                        <!-- ✏️ RECEPTION TIME -->
+                        <p class="details__time">5:30 PM</p>
+                        <!-- ✏️ RECEPTION LOCATION -->
+                        <p>Villa Serena Estate<br>The Stone Terrace &amp; Barrel Room<br>Dinner, dancing, and a great
+                            deal of cake</p>
+                    </article>
+
+                    <article class="details__card">
+                        <span class="details__icon" aria-hidden="true">⟡</span>
+                        <h3>Attire</h3>
+                        <p class="details__time">Garden Formal</p>
+                        <!-- ✏️ DRESS CODE NOTE -->
+                        <p>Think soft fabrics and earth tones. The ceremony lawn is grass, so heels with a thin point
+                            are not recommended.</p>
+                    </article>
+                </div>
+
+                <!-- ============================================================
+             GOOGLE MAP EMBED
+             ✏️ TO CHANGE THE MAP LOCATION: replace "Glen+Ellen,+California"
+             in the src URL below with your venue's address, formatted
+             with "+" in place of spaces, e.g.:
+             https://www.google.com/maps?q=123+Main+St,+Springfield&output=embed
+             No API key is required for this basic embed format.
+        ============================================================ -->
+                <div class="details__map">
+                    <iframe src="https://www.google.com/maps?q=Glen+Ellen,+California&output=embed" width="100%"
+                        height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Map showing Villa Serena Estate, Glen Ellen, California">
+                    </iframe>
+                </div>
+
+                <a class="details__directions" href="https://www.google.com/maps?q=Glen+Ellen,+California"
+                    target="_blank" rel="noopener noreferrer">Get Directions →</a>
+            </section>
+
+            <!-- ============================================================
+           RSVP SECTION
+           ✏️ TO CHANGE WHERE RSVPs ARE SENT: see script.js, the
+              RSVP_ENDPOINT constant and the handleRsvpSubmit function
+              near the top of the file, fully commented.
+           ✏️ TO CHANGE THE RSVP DEADLINE TEXT: edit .rsvp__intro below.
+      ============================================================ -->
+            <section class="rsvp" id="rsvp">
+                <p class="section-eyebrow">RSVP</p>
+                <h2 class="section-title">We Hope You'll Join Us</h2>
+                <p class="section-intro rsvp__intro">Kindly respond by <strong>August 1st, 2026</strong>. We can't wait
+                    to celebrate with you.</p>
+
+                <form class="rsvp__form" id="rsvpForm" novalidate>
+
+                    <div class="form-row">
+                        <label for="guestName">Full Name</label>
+                        <input type="text" id="guestName" name="guestName" autocomplete="name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="guestEmail">Email Address</label>
+                        <input type="email" id="guestEmail" name="guestEmail" autocomplete="email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="guestPhone">Phone Number <span class="form-row__optional">(optional)</span></label>
+                        <input type="tel" id="guestPhone" name="guestPhone" autocomplete="tel">
+                    </div>
+
+                    <fieldset class="form-row form-row--fieldset">
+                        <legend>Will you be attending?</legend>
+                        <div class="radio-group">
+                            <label class="radio-pill">
+                                <input type="radio" name="attending" value="yes" required>
+                                <span>Joyfully Accepts</span>
+                            </label>
+                            <label class="radio-pill">
+                                <input type="radio" name="attending" value="no" required>
+                                <span>Regretfully Declines</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-row">
+                        <label for="guestCount">Number of Guests Attending (including yourself)</label>
+                        <select id="guestCount" name="guestCount">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="mealChoice">Meal Preference</label>
+                        <select id="mealChoice" name="mealChoice">
+                            <option value="chicken">Herb-Roasted Chicken</option>
+                            <option value="salmon">Pan-Seared Salmon</option>
+                            <option value="risotto">Wild Mushroom Risotto (Vegetarian)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="guestMessage">A Note for the Couple <span
+                                class="form-row__optional">(optional)</span></label>
+                        <textarea id="guestMessage" name="guestMessage" rows="4"
+                            placeholder="Song requests, well wishes, or anything else..."></textarea>
+                    </div>
+
+                    <button type="submit" class="rsvp__submit" id="rsvpSubmit">Send RSVP</button>
+
+                    <!-- Live region used by script.js to announce success/error states -->
+                    <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+
+        </main>
+
+        <!-- ============================================================
+         FOOTER
+         ✏️ TO CHANGE THE CONTACT EMAIL: edit the mailto link below.
+    ============================================================ -->
+        <footer class="footer">
+            <p class="footer__monogram">C&nbsp;&amp;&nbsp;H</p>
+            <p class="footer__text">With love and gratitude, we thank you for being part of our story.</p>
+            <p class="footer__contact">Questions? Reach us at <a
+                    href="mailto:charlotte.and.henry@example.com">charlotte.and.henry@example.com</a></p>
+        </footer>
+
+    </div>
+    <!-- end .site -->
+
+
+    <!-- ============================================================
+       FLOATING MUSIC BUTTON
+       Sits fixed in the corner of the screen at all times (even
+       during the envelope animation). Toggles the hidden <audio>
+       element below.
+
+       ✏️ TO CHANGE THE BACKGROUND MUSIC: replace the "src" inside
+          the <source> tag below with the path to your own audio file,
+          e.g. "audio/our-song.mp3". MP3 and OGG are both widely
+          supported; you can include both for best browser compatibility.
+          Please make sure you have the rights to use the track
+          (a royalty-free or licensed song is recommended).
+  ============================================================ -->
+    <button class="music-button" id="musicButton" type="button" aria-label="Play background music" aria-pressed="false">
+        <span class="music-button__bars" aria-hidden="true">
+            <span></span><span></span><span></span>
+        </span>
+    </button>
+
+    <audio id="bgMusic" loop preload="none">
+        <!-- ✏️ REPLACE WITH YOUR OWN SONG FILE PATH -->
+        <source src="audio/our-song.mp3" type="audio/mpeg">
+        <source src="audio/our-song.ogg" type="audio/ogg">
+        Your browser does not support background audio.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
