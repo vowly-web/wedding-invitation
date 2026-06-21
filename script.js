@@ -1,7 +1,4 @@
-/* ================================================================
-   CHARLOTTE & HENRY — WEDDING INVITATION SCRIPT
-   Pure vanilla JavaScript, no dependencies.
-   ================================================================ */
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
